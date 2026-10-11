@@ -1,14 +1,15 @@
-from data.login_data import LoginData
+from data.login_data import LoginLocator
+from time import sleep
 
 
 class LoginPage:
 
     def __init__(self, page):
         self.page = page
-        self.login_page_url = LoginData.PAGE_URL
-        self.username = page.locator(LoginData.USER_LOC)
-        self.password = page.locator(LoginData.PASS_LOC)
-        self.login_button = page.locator(LoginData.SUBMIT_LOC)
+        self.login_page_url = LoginLocator.PAGE_URL
+        self.username = page.locator(LoginLocator.USER_LOC)
+        self.password = page.locator(LoginLocator.PASS_LOC)
+        self.login_button = page.locator(LoginLocator.SUBMIT_LOC)
 
     def open(self):
         self.page.goto(self.login_page_url)
@@ -19,6 +20,7 @@ class LoginPage:
         if password:
             self.password.fill(password)
         self.login_button.click()
+        sleep(3)
     
     # def empty_login(self):
     #     self.login_button.click()
