@@ -11,12 +11,10 @@ class TimePage:
         self.page.locator(TimeLocator.time_locator).click()
     
     def search_emp_name(self, employee_name):
-        input_ele = self.page.locator(TimeLocator.input_locator)
-        input_ele.press_sequentially(employee_name, delay=500)
-        
-        select_ele = self.page.locator(TimeLocator.select_emp_locator)
-        select_ele.wait_for(state="visible", timeout=10000)
-        select_ele.click()
+        self.page.locator(TimeLocator.input_locator).type(employee_name, delay=500)
+
+        self.page.locator(TimeLocator.select_emp_locator).wait_for(state="visible")
+        self.page.locator(TimeLocator.select_emp_locator).click()
 
         self.page.wait_for_timeout(10000)
 
