@@ -6,7 +6,6 @@ import pytest
 
 class TestMyinfo:
 
-
     def login(self, page):
         page = LoginPage(page)
         page.open()
